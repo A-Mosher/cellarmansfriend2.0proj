@@ -4,9 +4,13 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+import productRoutes from './routes/products.js';
+
 
 const app = express();
 dotenv.config();
+
+app.use('/products', productRoutes)
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
