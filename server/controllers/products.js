@@ -10,15 +10,15 @@ export const getProducts = async (req, res) => {
     }
 }
 
-export const createProduct = (req, res) => {
+export const createProduct = async (req, res) => {
     const product = req.body;
 
-    const newBeer = newProduct(product)
+    const newProduct = ProductInfo(product)
 
     try {
-        await newBeer.save();
+        await newProduct.save();
 
-        res.status(201).json(newBeer);
+        res.status(201).json(newProduct);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
