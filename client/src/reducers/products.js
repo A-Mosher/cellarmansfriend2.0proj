@@ -1,12 +1,11 @@
-const reducer = (products = [], action) => {
-    if(action.type === 'CREATE') {
-        switch (action.type) {
-            case 'FETCH_ALL':
-                return products;
-            case 'CREATE':
-                return products;
-            default:
-                return products;
-        } 
+/* eslint-disable import/no-anonymous-default-export */
+export default (products = [], action) => {
+    switch (action.type) {
+        case 'FETCH_ALL':
+            return action.payload;
+        case 'CREATE':
+            return products;
+        default:
+            return products;
     }
 }
