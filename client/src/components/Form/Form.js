@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
+import { useDispatch } from 'react-redux';
 
 import useStyles from './styles';
+import { createProduct } from '../../actions/products';
 
 const Form = () => {
-    const [productData, setProductData] = useState({ creator: '', title: '', tags: '', selectedFile: '' });
+    const [productData, setProductData] = useState({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        dispatch(createProduct(productData));
     }
 
     const clear = () => {

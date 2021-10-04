@@ -13,7 +13,7 @@ const Products = () => {
 
     return (
         <>
-            <h1 className={classes.tank}>Products</h1>
+            <h1 className={classes}>Products</h1>
             <Product />
             <Product />
         </>

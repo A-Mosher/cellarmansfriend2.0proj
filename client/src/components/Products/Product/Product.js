@@ -6,7 +6,7 @@ const Product = () => {
     const classes = useStyles();
     
     return (
-        <h1>Product</h1>
+        <h1 className={classes}>Product</h1>
     );
 }
 
