@@ -1,12 +1,12 @@
-import NewProduct from "../models/newProduct.js";
+import ProductInfo from "../models/productInfo.js";
 
 export const getProducts = async (req, res) => {
     try {
-        const newProducts =  await NewProduct.find();
+        const allProducts =  await ProductInfo.find();
 
-        res.status(200).json(newProducts);
+        res.status(200).json(allProducts);
     } catch (error) {
-        res.status(404).json({ message: error.message })
+        res.status(404).json({ message: error.message });
     }
 }
 
