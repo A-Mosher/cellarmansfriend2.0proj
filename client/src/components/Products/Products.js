@@ -15,13 +15,11 @@ const Products = () => {
     return (
         !products.length ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-                {
-                    products.map((product) => (
-                        <Grid key={product._id} item xs={12} sma={6}>
-                            <Product product={product} />
-                        </Grid>
-                    ))
-                }
+                {products.map((product) => (
+                    <Grid key={product._id} item xs={12} sma={6}>
+                        <Product product={product} />
+                    </Grid>
+                ))}
             </Grid>
         )
     );

@@ -15,11 +15,11 @@ const Product = ({ product }) => {
             <CardMedia className={classes.media} image={product.selectedFile} title={product.title} />
             <div className={classes.overlay}>
                 <Typography variant="h6">{product.creator}</Typography>
-                <Typography variant="body2">{moment(product.createdAt)}</Typography>
+                <Typography variant="body2">{moment(product.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size="small" onClick={() => {}}>
-                    <MoreHorizIcon fontSize="default" />
+                    <MoreHorizIcon fontSize="medium" />
                 </Button>
             </div>
             <div className={classes.details}>
