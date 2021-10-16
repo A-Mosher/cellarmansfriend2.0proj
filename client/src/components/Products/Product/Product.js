@@ -18,7 +18,7 @@ const Product = ({ product }) => {
                 <Typography variant="body2">{moment(product.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white', align: 'right', style: 'flex'}} size="small" onClick={() => {}}>
+                <Button style={{color: 'white'}} size="small" onClick={() => {}}>
                     <MoreHorizIcon fontSize="medium" />
                 </Button>
             </div>
