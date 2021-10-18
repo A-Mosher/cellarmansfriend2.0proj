@@ -7,7 +7,7 @@ import moment from 'moment';
 
 import useStyles from './styles';
 
-const Product = ({ product }) => {
+const Product = ({ product, setCurrentId }) => {
     const classes = useStyles();
     
     return (
@@ -18,7 +18,7 @@ const Product = ({ product }) => {
                 <Typography variant="body2">{moment(product.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => {}}>
+                <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(product._id)}>
                     <MoreHorizIcon fontSize="medium" />
                 </Button>
             </div>

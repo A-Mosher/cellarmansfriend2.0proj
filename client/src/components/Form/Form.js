@@ -4,9 +4,9 @@ import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 
 import useStyles from './styles';
-import { createProduct } from '../../actions/products';
+import { createProduct, updateProduct } from '../../actions/products';
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId}) => {
     const [productData, setProductData] = useState({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -14,7 +14,11 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createProduct(productData));
+        if(currentId) {
+            dispatch(updateProduct(currentId, productData));
+        } else {
+            dispatch(createProduct(productData));
+        }
     }
 
     const clear = () => {
