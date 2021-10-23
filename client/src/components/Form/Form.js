@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 
 import useStyles from './styles';
 import { createProduct, updateProduct } from '../../actions/products';
 
 const Form = ({ currentId, setCurrentId}) => {
     const [productData, setProductData] = useState({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
+    const product = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(product) setProductData(product);
+    }, [product])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,16 +24,19 @@ const Form = ({ currentId, setCurrentId}) => {
         } else {
             dispatch(createProduct(productData));
         }
+
+        clear();
     }
 
     const clear = () => {
-
+        setCurrentId(null);
+        setProductData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
     }
     
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-            <Typography variant="h6">Blending a New Beer</Typography>
+            <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a New Beer</Typography>
             <TextField name="creator" variant="outlined" label="Creator" fullWidth value={productData.creator} onChange={(e) => setProductData({ ...productData, creator: e.target.value })} />
             <TextField name="title" variant="outlined" label="Title" fullWidth value={productData.title} onChange={(e) => setProductData({ ...productData, title: e.target.value })} />
             <TextField name="message" variant="outlined" label="Message" fullWidth value={productData.message} onChange={(e) => setProductData({ ...productData, message: e.target.value })} />
